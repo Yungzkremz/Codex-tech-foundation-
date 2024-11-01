@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiac Sign Calculator</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Container styling */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            animation: fadeIn 2s;
+        }
+
+        /* Header */
+        h2 {
+            font-size: 24px;
+            color: #f7e018;
+        }
+
+        /* Input fields */
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Button */
+        button {
+            background-color: #f7e018;
+            color: #333;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        /* Result */
+        #result, #description {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f7e018;
+            margin-top: 15px;
+            animation: fadeInText 1.5s ease-in-out;
+        }
+
+        /* Fade-in animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Zodiac Sign Calculator</h2>
+        <label for="month">Month:</label>
+        <input type="number" id="month" placeholder="Enter month (1-12)" min="1" max="12">
+        <br>
+        <label for="day">Day:</label>
+        <input type="number" id="day" placeholder="Enter day (1-31)" min="1" max="31">
+        <br>
+        <button onclick="calculateZodiac()">Find Zodiac Sign</button>
+        <h3 id="result"></h3>
+        <p id="description"></p>
+    </div>
+
+    <script>
+        function calculateZodiac() {
+            const month = parseInt(document.getElementById("month").value);
+            const day = parseInt(document.getElementById("day").value);
+            let zodiacSign = "";
+            let description = "";
+
+            if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+                zodiacSign = "Aquarius";
+                description = "Innovative, independent, and humanitarian.";
+            } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+                zodiacSign = "Pisces";
+                description = "Compassionate, artistic, and intuitive.";
+            } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+                zodiacSign = "Aries";
+                description = "Courageous, energetic, and enthusiastic.";
+            } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+                zodiacSign = "Taurus";
+                description = "Reliable, patient, and practical.";
+            } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
+                zodiacSign = "Gemini";
+                description = "Adaptable, outgoing, and intelligent.";
+            } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
+                zodiacSign = "Cancer";
+                description = "Emotional, loyal, and nurturing.";
+            } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+                zodiacSign = "Leo";
+                description = "Confident, ambitious, and generous.";
+            } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+                zodiacSign = "Virgo";
+                description = "Analytical, hardworking, and kind.";
+            } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
+                zodiacSign = "Libra";
+                description = "Diplomatic, fair-minded, and social.";
+            } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
+                zodiacSign = "Scorpio";
+                description = "Passionate, resourceful, and determined.";
+            } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+                zodiacSign = "Sagittarius";
+                description = "Adventurous, optimistic, and philosophical.";
+            } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+                zodiacSign = "Capricorn";
+                description = "Disciplined, responsible, and ambitious.";
+            } else {
+                zodiacSign = "Invalid date entered!";
+                description = "";
+            }
+
+            document.getElementById("result").innerText = `Your Zodiac Sign is: ${zodiacSign}`;
+            document.getElementById("description").innerText = description;
+        }
+    </script>
+</body>
+</html>
